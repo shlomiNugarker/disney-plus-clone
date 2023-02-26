@@ -52,21 +52,21 @@ input {
 }
 
 // MAC like scrollbar
-// ::-webkit-scrollbar {
-//   width: 8px;
-//   background-color: rgba(193, 193, 193, 0.71);
-//   -webkit-border-radius: 100px;
-// }
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: rgba(193, 193, 193, 0.71);
+  -webkit-border-radius: 100px;
+}
 
-// ::-webkit-scrollbar:hover {
-//   background-color: rgba(103, 43, 43, 0.09);
-// }
+::-webkit-scrollbar:hover {
+  background-color: rgba(103, 43, 43, 0.09);
+}
 
-// ::-webkit-scrollbar-thumb:vertical {
-//   background: rgba(0, 0, 0, 0.5);
-//   -webkit-border-radius: 100px;
-// }
+::-webkit-scrollbar-thumb:vertical {
+  background: rgba(0, 0, 0, 0.5);
+  -webkit-border-radius: 100px;
+}
 
-// ::-webkit-scrollbar-thumb:vertical:active {
-//   -webkit-border-radius: 100px;
-// }
+::-webkit-scrollbar-thumb:vertical:active {
+  -webkit-border-radius: 100px;
+}
