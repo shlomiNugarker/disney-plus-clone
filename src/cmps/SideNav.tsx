@@ -11,7 +11,11 @@ import { BsStars } from 'react-icons/bs'
 import { useState } from 'react'
 import Link from 'next/link'
 
-export default function SideNav() {
+type Props = {
+  pageName?: string
+}
+
+export default function SideNav({ pageName }: Props) {
   const [isNavOpen, setIsNavOpen] = useState(false)
 
   return (
@@ -31,7 +35,7 @@ export default function SideNav() {
       <nav>
         <div>
           <Link href="mypage">
-            <span>
+            <span className={pageName === 'mypage' ? styles.selected : ''}>
               <Image
                 alt=""
                 loader={() =>
@@ -43,48 +47,48 @@ export default function SideNav() {
                 width="20"
                 height="20"
               />
+              {isNavOpen && <p>My Space</p>}
             </span>
-            {isNavOpen && <p>My Space</p>}
           </Link>
         </div>
         <div>
           <Link href="explore">
-            <span>
+            <span className={pageName === 'explore' ? styles.selected : ''}>
               <AiOutlineSearch />
+              {isNavOpen && <p>Search</p>}
             </span>
-            {isNavOpen && <p>Search</p>}
           </Link>
         </div>
         <div>
           <Link href="./home">
-            <span>
+            <span className={pageName === 'home' ? styles.selected : ''}>
               <AiOutlineHome />
+              {isNavOpen && <p>Home</p>}
             </span>
-            {isNavOpen && <p>Home</p>}
           </Link>
         </div>
         <div>
           <Link href="shows">
-            <span>
+            <span className={pageName === 'shows' ? styles.selected : ''}>
               <SlScreenDesktop />
+              {isNavOpen && <p>Series</p>}
             </span>
-            {isNavOpen && <p>Series</p>}
           </Link>
         </div>
         <div>
           <Link href="movies">
-            <span>
+            <span className={pageName === 'movies' ? styles.selected : ''}>
               <TbMovie />
+              {isNavOpen && <p>Movies</p>}
             </span>
-            {isNavOpen && <p>Movies</p>}
           </Link>
         </div>
         <div>
           <Link href="originals">
-            <span>
+            <span className={pageName === 'originals' ? styles.selected : ''}>
               <BsStars />
+              {isNavOpen && <p>Originals</p>}
             </span>
-            {isNavOpen && <p>Originals</p>}
           </Link>
         </div>
       </nav>
