@@ -102,7 +102,7 @@ export default function Home() {
               </span>
               <p> + More than you&apos;d ever imagine </p>
               <div>
-                <button>Sign Up Now</button>
+                <button onClick={() => router.push('home')}>Sign Up Now</button>
                 <span>&gt;</span>
               </div>
             </div>
