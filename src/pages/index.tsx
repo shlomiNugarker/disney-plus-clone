@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import styles from '../styles/pages/_home.module.scss'
+import styles from '../styles/pages/_index.module.scss'
 import { useEffect, useState } from 'react'
 import logo from '../../public/Disney+_logo.svg'
 import detailsSrc from '../../public/1.jpg'
@@ -81,7 +81,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.home}>
+      <main className={styles.index}>
         <section className={styles['landing-page']}>
           <header>
             <span className={styles['login-btn']}>

@@ -22,7 +22,7 @@ export default function MoviePreview({ movie }: Props) {
       <span
         onMouseOver={() => {
           //   console.log('onMouseOver')
-          setIsHover(true)
+          // setIsHover(true)
         }}
         onMouseLeave={() => {
           //   console.log('onMouseLeave')

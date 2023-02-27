@@ -1,6 +1,23 @@
+import SideNav from '@/cmps/SideNav'
 import Head from 'next/head'
 
+import Image from 'next/image'
+
+import styles from '../styles/pages/_home.module.scss'
+import { useState } from 'react'
+import MovieList from '@/cmps/MovieList'
+
 export default function Home() {
+  const [movies, setMovies] = useState<any>()
+  const loadMovies = async () => {
+    const movies = await import('../data/popular.json')
+    console.log(movies)
+    setMovies(movies.results)
+  }
+
+  loadMovies()
+  if (!movies) return
+
   return (
     <>
       <Head>
@@ -9,8 +26,26 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
-        <h1>home</h1>
+      <main className={styles.home}>
+        <SideNav pageName="home" />
+
+        <div className={styles.container}>
+          <div
+            className={styles.div}
+            style={{
+              backgroundImage: `url(https://image.tmdb.org/t/p/original/${movies[0]?.backdrop_path})`,
+            }}
+          ></div>
+          <div className={styles['main-movie']}>
+            <div>
+              <h1>{movies[0]?.title}</h1>
+              <span>{movies[0]?.vote_average}</span>
+              <p>{movies[0]?.overview}</p>
+            </div>
+            {/* LIST */}
+          </div>
+          {/* <MovieList movies={movies} /> */}
+        </div>
       </main>
     </>
   )

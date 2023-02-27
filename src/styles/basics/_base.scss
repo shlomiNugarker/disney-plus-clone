@@ -11,6 +11,7 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 img {
@@ -54,16 +55,16 @@ input {
 // MAC like scrollbar
 ::-webkit-scrollbar {
   width: 8px;
-  background-color: rgba(193, 193, 193, 0.71);
+  background-color: #14151c;
   -webkit-border-radius: 100px;
 }
 
 ::-webkit-scrollbar:hover {
-  background-color: rgba(103, 43, 43, 0.09);
+  background-color: #14151c;
 }
 
 ::-webkit-scrollbar-thumb:vertical {
-  background: rgba(0, 0, 0, 0.5);
+  background: #9c9c9e72;
   -webkit-border-radius: 100px;
 }
 

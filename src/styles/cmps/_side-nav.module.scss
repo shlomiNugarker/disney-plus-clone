@@ -34,6 +34,18 @@
         align-items: center;
         justify-content: center;
 
+        .selected {
+          -webkit-filter: drop-shadow(0 0 20px #ffffff99);
+          filter: drop-shadow(0 0 20px #ffffff99);
+          p {
+            color: white;
+          }
+
+          svg {
+            color: white;
+          }
+        }
+
         span {
           display: flex;
           align-items: center;
@@ -64,7 +76,7 @@
   justify-content: flex-start;
   background: linear-gradient(
     90.43deg,
-    rgba(15, 16, 20, 0.95) 16.24%,
+    rgba(15, 16, 20, 0.95) 36.24%,
     rgba(15, 16, 20, 0) 98.46%
   );
 
@@ -86,10 +98,10 @@
               height: 25px;
               color: #ffffff;
             }
-          }
-          p {
-            color: #ffffff;
-            padding-left: 15px;
+            p {
+              color: #ffffff;
+              padding-left: 15px;
+            }
           }
         }
       }
@@ -99,10 +111,10 @@
           }
           svg {
           }
-        }
-        p {
-          color: #9e9ea0;
-          padding-left: 15px;
+          p {
+            color: #9e9ea0;
+            padding-left: 15px;
+          }
         }
       }
     }

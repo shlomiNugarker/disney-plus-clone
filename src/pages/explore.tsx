@@ -27,7 +27,7 @@ export default function Explore() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.explore}>
-        <SideNav />
+        <SideNav pageName="explore" />
 
         <div className={styles.container}>
           {/* INPUT */}
