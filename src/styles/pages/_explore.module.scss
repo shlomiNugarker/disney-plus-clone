@@ -1,4 +1,64 @@
 .explore {
-  min-height: 100vh;
-  background-color: #14151c;
+  transition: all, 0.3s;
+
+  .container {
+    min-height: 100vh;
+
+    background-color: #14151c;
+    height: 100%;
+    padding-left: 85px;
+    padding-right: 40px;
+    padding-top: 32px;
+
+    .search-container {
+      display: flex;
+      position: relative;
+      width: 100%;
+      padding-left: 20px;
+      padding-right: 20px;
+      border-radius: 8px;
+      background-color: #252833;
+      color: #8f98b2;
+
+      & ::-webkit-input-placeholder {
+        /* WebKit, Blink, Edge */
+        color: #8f98b2;
+      }
+
+      div {
+        width: 100%;
+        display: flex;
+
+        span {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          svg {
+            width: 30px;
+            height: 30px;
+          }
+        }
+
+        input {
+          width: 100%;
+          padding-left: 20px;
+          padding-right: 20px;
+          background-color: transparent;
+          border-width: 0;
+          outline: 2px solid transparent;
+          padding: 12px 8px;
+          line-height: 24px;
+          height: 65px;
+          color: #8f98b2;
+        }
+      }
+    }
+  }
+
+  .title {
+    margin-top: 48px;
+    color: #e1e6f0;
+    padding-bottom: 12px;
+    font-size: 20px;
+  }
 }
