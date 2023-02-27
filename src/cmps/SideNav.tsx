@@ -7,10 +7,13 @@ import { AiOutlineHome } from 'react-icons/ai'
 import { SlScreenDesktop } from 'react-icons/sl'
 import { TbMovie } from 'react-icons/tb'
 import { BsStars } from 'react-icons/bs'
+
 import { useState } from 'react'
+import Link from 'next/link'
 
 export default function SideNav() {
-  const [isNavOpen, setIsNavOpen] = useState(true)
+  const [isNavOpen, setIsNavOpen] = useState(false)
+
   return (
     <aside
       onMouseOver={() => {
@@ -27,7 +30,7 @@ export default function SideNav() {
     >
       <nav>
         <div>
-          <a href="">
+          <Link href="mypage">
             <span>
               <Image
                 alt=""
@@ -42,47 +45,47 @@ export default function SideNav() {
               />
             </span>
             {isNavOpen && <p>My Space</p>}
-          </a>
+          </Link>
         </div>
         <div>
-          <a href="">
+          <Link href="explore">
             <span>
               <AiOutlineSearch />
-            </span>{' '}
+            </span>
             {isNavOpen && <p>Search</p>}
-          </a>
+          </Link>
         </div>
         <div>
-          <a href="">
+          <Link href="./home">
             <span>
               <AiOutlineHome />
-            </span>{' '}
+            </span>
             {isNavOpen && <p>Home</p>}
-          </a>
+          </Link>
         </div>
         <div>
-          <a href="">
+          <Link href="shows">
             <span>
               <SlScreenDesktop />
-            </span>{' '}
+            </span>
             {isNavOpen && <p>Series</p>}
-          </a>
+          </Link>
         </div>
         <div>
-          <a href="">
+          <Link href="movies">
             <span>
               <TbMovie />
-            </span>{' '}
+            </span>
             {isNavOpen && <p>Movies</p>}
-          </a>
+          </Link>
         </div>
         <div>
-          <a href="">
+          <Link href="originals">
             <span>
               <BsStars />
-            </span>{' '}
+            </span>
             {isNavOpen && <p>Originals</p>}
-          </a>
+          </Link>
         </div>
       </nav>
     </aside>
