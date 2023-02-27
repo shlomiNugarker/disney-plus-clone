@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import styles from '../styles/pages/Home.module.scss'
+import styles from '../styles/pages/_home.module.scss'
 // import { useEffect, useState } from 'react'
 import logo from '../../public/Disney+_logo.svg'
 import detailsSrc from '../../public/1.jpg'
