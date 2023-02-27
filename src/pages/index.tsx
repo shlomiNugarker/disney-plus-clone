@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import styles from '../styles/pages/_home.module.scss'
-// import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import logo from '../../public/Disney+_logo.svg'
 import detailsSrc from '../../public/1.jpg'
 import exclusiveSrc from '../../public/2.jpg'
@@ -13,24 +13,65 @@ import { FiFacebook } from 'react-icons/fi'
 import { RiTwitterLine } from 'react-icons/ri'
 import { BsInstagram } from 'react-icons/bs'
 
-export default function Home() {
-  // const [res, setRes] = useState(null)
+import { useRouter } from 'next/dist/client/router'
 
-  // const load = async () => {
-  //   // top rated
-  //   // const res = await fetch(
-  //   //   'https://api.themoviedb.org/3/movie/top_rated?api_key=b32d3cdb082983f9721d6e0cf0975d67&language=en-US&page=1'
-  //   // )
-  //   // genere list
-  //   // const res = await fetch(
-  //   //   'https://api.themoviedb.org/3/genre/movie/list?api_key=b32d3cdb082983f9721d6e0cf0975d67&language=en-US'
-  //   // )
-  //   // const m = await res.json()
-  //   // console.log(m)
-  // }
-  // useEffect(() => {
-  //   load()
-  // }, [])
+export default function Home() {
+  const router = useRouter()
+  const load = async () => {
+    // MOVIES:
+    // // top rated
+    // const res = await fetch(
+    //   'https://api.themoviedb.org/3/movie/top_rated?api_key=b32d3cdb082983f9721d6e0cf0975d67&language=en-US&page=1'
+    // )
+    // // genere list
+    // const res = await fetch(
+    //   'https://api.themoviedb.org/3/genre/movie/list?api_key=b32d3cdb082983f9721d6e0cf0975d67&language=en-US'
+    // )
+    // // latest
+    // const res = await fetch(
+    //   'https://api.themoviedb.org/3/movie/latest?api_key=b32d3cdb082983f9721d6e0cf0975d67&language=en-US'
+    // )
+    // const m = await res.json()
+    // console.log(m)
+    // popular
+    //   const res = await fetch(
+    //     'https://api.themoviedb.org/3/movie/popular?api_key=b32d3cdb082983f9721d6e0cf0975d67&language=en-US&page=1'
+    //   )
+    //   const m = await res.json()
+    //   console.log(m)
+    // }
+    // upcoming
+    //   const res = await fetch(
+    //     'https://api.themoviedb.org/3/movie/upcoming?api_key=b32d3cdb082983f9721d6e0cf0975d67&language=en-US&page=1'
+    //   )
+    //   const m = await res.json()
+    //   console.log(m)
+    // }
+    //  TV:
+    // GET/tv/latest
+    //   const res = await fetch(
+    //     'https://api.themoviedb.org/3/tv/latest?api_key=b32d3cdb082983f9721d6e0cf0975d67&language=en-US'
+    //   )
+    //   const m = await res.json()
+    //   console.log(m)
+    // }
+    // GET/tv/popular
+    //   const res = await fetch(
+    //     'https://api.themoviedb.org/3/tv/popular?api_key=b32d3cdb082983f9721d6e0cf0975d67&language=en-US&page=1'
+    //   )
+    //   const m = await res.json()
+    //   console.log(m)
+    // }
+    // GET/tv/top rated
+    //   const res = await fetch(
+    //     'https://api.themoviedb.org/3/tv/top_rated?api_key=b32d3cdb082983f9721d6e0cf0975d67&language=en-US&page=1'
+    //   )
+    //   const m = await res.json()
+    //   console.log(m)
+  }
+  useEffect(() => {
+    // load()
+  }, [])
 
   return (
     <>
