@@ -1,7 +1,7 @@
 // https://image.tmdb.org/t/p/original/
 
 // GET movie/top_rated
-const topRated = {
+export const topRated = {
   page: 1,
   results: [
     {
