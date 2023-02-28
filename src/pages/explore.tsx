@@ -6,17 +6,18 @@ import styles from '../styles/pages/_explore.module.scss'
 import { CiSearch } from 'react-icons/ci'
 import MovieList from '@/cmps/MovieList'
 import { useState } from 'react'
+import Movie from '@/interfaces/movie'
 
-export default function Explore() {
-  const [movies, setMovies] = useState<any>()
+import MovieDetails from '@/cmps/MovieDetails'
 
-  const loadMovies = async () => {
-    const movies = await import('../data/top-rated.json')
-    console.log(movies)
-    setMovies(movies.results)
-  }
+type Props = {
+  movies: Movie[]
+}
 
-  loadMovies()
+export default function Explore({ movies }: Props) {
+  const [movieDetailsToShow, setMovieDetailsToShow] = useState<Movie | null>(
+    null
+  )
 
   return (
     <>
@@ -42,9 +43,31 @@ export default function Explore() {
 
           {/* LIST */}
           <p className={styles.title}>Popular Searches</p>
-          <MovieList movies={movies} />
+          <MovieList
+            movies={movies}
+            setMovieDetailsToShow={setMovieDetailsToShow}
+          />
         </div>
+        {movieDetailsToShow && (
+          <MovieDetails
+            movie={movieDetailsToShow}
+            setMovieDetailsToShow={setMovieDetailsToShow}
+          ></MovieDetails>
+        )}
       </main>
     </>
   )
+}
+
+export async function getServerSideProps(context: any) {
+  // const req = context.req
+  // const res = context.res
+  const res = await import('../data/top-rated.json')
+  const movies = res.results
+
+  return {
+    props: {
+      movies,
+    },
+  }
 }
