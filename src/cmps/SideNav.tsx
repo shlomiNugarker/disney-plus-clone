@@ -46,6 +46,7 @@ export default function SideNav({ pageName }: Props) {
                 }
                 width="20"
                 height="20"
+                unoptimized={true}
               />
               {isNavOpen && <p>My Space</p>}
             </span>
