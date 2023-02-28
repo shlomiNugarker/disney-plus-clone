@@ -1,22 +1,40 @@
 import SideNav from '@/cmps/SideNav'
 import Head from 'next/head'
 
-import Image from 'next/image'
-
 import styles from '../styles/pages/_home.module.scss'
-import { useState } from 'react'
-import MovieList from '@/cmps/MovieList'
+import { useEffect, useState } from 'react'
+import MySwiper from '@/cmps/MySwiper'
+import Movie from '@/interfaces/movie'
+import MovieDetails from '@/cmps/MovieDetails'
 
 export default function Home() {
-  const [movies, setMovies] = useState<any>()
-  const loadMovies = async () => {
-    const movies = await import('../data/popular.json')
-    console.log(movies)
-    setMovies(movies.results)
-  }
+  const [popularMovies, setPopularMovies] = useState<Movie[] | null>(null)
+  const [topRated, setTopRated] = useState<Movie[] | null>(null)
+  const [upComing, setupComing] = useState<Movie[] | null>(null)
+  const [tvPopular, setTvPopular] = useState<any | null>(null)
 
-  loadMovies()
-  if (!movies) return
+  const [movieDetailsToShow, setMovieDetailsToShow] = useState<Movie | null>(
+    null
+  )
+
+  useEffect(() => {
+    const loadMovies = async () => {
+      const popular = await import('../data/popular.json')
+      setPopularMovies(popular.results)
+
+      const topRated = await import('../data/top-rated.json')
+      setTopRated(topRated.results)
+
+      const coming = await import('../data/upcoming.json')
+      setupComing(coming.results)
+
+      const tvPopular = await import('../data/TV/popular.json')
+      setTvPopular(tvPopular.results)
+    }
+    loadMovies()
+  }, [])
+
+  if (!popularMovies) return
 
   return (
     <>
@@ -33,20 +51,58 @@ export default function Home() {
           <div
             className={styles.div}
             style={{
-              backgroundImage: `url(https://image.tmdb.org/t/p/original/${movies[0]?.backdrop_path})`,
+              backgroundImage: `url(https://image.tmdb.org/t/p/original/${popularMovies[0]?.backdrop_path})`,
             }}
           ></div>
           <div className={styles['main-movie']}>
             <div>
-              <h1>{movies[0]?.title}</h1>
-              <span>{movies[0]?.vote_average}</span>
-              <p>{movies[0]?.overview}</p>
+              <h1>{popularMovies[0]?.title}</h1>
+              <span>{popularMovies[0]?.vote_average}</span>
+              {/* <p>{movies[0]?.overview}</p> */}
             </div>
-            {/* LIST */}
           </div>
-          {/* <MovieList movies={movies} /> */}
+
+          <h2 className={styles.category}>Popular</h2>
+          <MySwiper
+            setMovieDetailsToShow={setMovieDetailsToShow}
+            movies={popularMovies}
+          />
+
+          <h2 className={styles.category}>Top Rated</h2>
+          <MySwiper
+            setMovieDetailsToShow={setMovieDetailsToShow}
+            movies={topRated || []}
+          />
+
+          <h2 className={styles.category}>Upcoming</h2>
+          <MySwiper
+            setMovieDetailsToShow={setMovieDetailsToShow}
+            movies={upComing || []}
+          />
+
+          <h2 className={styles.category}>Popular TV Shows</h2>
+          <MySwiper
+            setMovieDetailsToShow={setMovieDetailsToShow}
+            movies={tvPopular}
+          />
         </div>
+
+        {movieDetailsToShow && (
+          <MovieDetails
+            movie={movieDetailsToShow}
+            setMovieDetailsToShow={setMovieDetailsToShow}
+          ></MovieDetails>
+        )}
       </main>
     </>
   )
+}
+
+export async function getServerSideProps(context: any) {
+  // const req = context.req
+  // const res = context.res
+
+  return {
+    props: {},
+  }
 }
