@@ -1,8 +1,8 @@
-import Image from 'next/image'
 import styles from '../styles/cmps/_video-preview.module.scss'
 import { useEffect, useState } from 'react'
 import Movie from '@/interfaces/movie'
 import { Series } from '@/interfaces/series'
+
 import { youTubeService } from '@/services/frontend/youtubeService'
 
 type Props = {
@@ -23,7 +23,7 @@ export default function VideoPreview({ movie }: Props) {
     <section className={styles['video-preview']}>
       {videos && (
         <iframe
-          src={`https://www.youtube.com/embed/${videos[0].id}?controls=0`}
+          src={`https://www.youtube.com/embed/${videos[0]?.id}?controls=0`}
           width={600}
           height={600}
         ></iframe>

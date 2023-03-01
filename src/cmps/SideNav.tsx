@@ -33,7 +33,7 @@ export default function SideNav({ pageName }: Props) {
       }
     >
       <nav>
-        <div>
+        {/* <div>
           <Link href="mypage">
             <span className={pageName === 'mypage' ? styles.selected : ''}>
               <Image
@@ -51,7 +51,7 @@ export default function SideNav({ pageName }: Props) {
               {isNavOpen && <p>My Space</p>}
             </span>
           </Link>
-        </div>
+        </div> */}
         <div>
           <Link href="explore">
             <span className={pageName === 'explore' ? styles.selected : ''}>
@@ -68,30 +68,30 @@ export default function SideNav({ pageName }: Props) {
             </span>
           </Link>
         </div>
-        <div>
+        {/* <div>
           <Link href="shows">
             <span className={pageName === 'shows' ? styles.selected : ''}>
               <SlScreenDesktop />
               {isNavOpen && <p>Series</p>}
             </span>
           </Link>
-        </div>
-        <div>
+        </div> */}
+        {/* <div>
           <Link href="movies">
             <span className={pageName === 'movies' ? styles.selected : ''}>
               <TbMovie />
               {isNavOpen && <p>Movies</p>}
             </span>
           </Link>
-        </div>
-        <div>
+        </div> */}
+        {/* <div>
           <Link href="originals">
             <span className={pageName === 'originals' ? styles.selected : ''}>
               <BsStars />
               {isNavOpen && <p>Originals</p>}
             </span>
           </Link>
-        </div>
+        </div> */}
       </nav>
     </aside>
   )

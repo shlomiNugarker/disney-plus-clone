@@ -2,37 +2,24 @@ import SideNav from '@/cmps/SideNav'
 import Head from 'next/head'
 
 import styles from '../styles/pages/_home.module.scss'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import MySwiper from '@/cmps/MySwiper'
 import Movie from '@/interfaces/movie'
 import MovieDetails from '@/cmps/MovieDetails'
 
-export default function Home() {
-  const [popularMovies, setPopularMovies] = useState<Movie[] | null>(null)
-  const [topRated, setTopRated] = useState<Movie[] | null>(null)
-  const [upComing, setupComing] = useState<Movie[] | null>(null)
-  const [tvPopular, setTvPopular] = useState<any | null>(null)
+type Props = {
+  popularMovies: Movie[]
+  topRatedMovies: Movie[]
+  comingMovies: Movie[]
+  tvPopularMovies: Movie[]
+}
 
+export default function Home(props: Props) {
   const [movieDetailsToShow, setMovieDetailsToShow] = useState<Movie | null>(
     null
   )
 
-  useEffect(() => {
-    const loadMovies = async () => {
-      const popular = await import('../data/popular.json')
-      setPopularMovies(popular.results)
-
-      const topRated = await import('../data/top-rated.json')
-      setTopRated(topRated.results)
-
-      const coming = await import('../data/upcoming.json')
-      setupComing(coming.results)
-
-      const tvPopular = await import('../data/TV/popular.json')
-      setTvPopular(tvPopular.results)
-    }
-    loadMovies()
-  }, [])
+  const { popularMovies, topRatedMovies, comingMovies, tvPopularMovies } = props
 
   if (!popularMovies) return
 
@@ -58,7 +45,15 @@ export default function Home() {
             <div>
               <h1>{popularMovies[0]?.title}</h1>
               <span>{popularMovies[0]?.vote_average}</span>
-              {/* <p>{movies[0]?.overview}</p> */}
+              <p>{popularMovies[0]?.overview}</p>
+              <br />
+              <button
+                onClick={() => {
+                  setMovieDetailsToShow(popularMovies[0])
+                }}
+              >
+                Watch Trailer
+              </button>
             </div>
           </div>
 
@@ -71,19 +66,19 @@ export default function Home() {
           <h2 className={styles.category}>Top Rated</h2>
           <MySwiper
             setMovieDetailsToShow={setMovieDetailsToShow}
-            movies={topRated || []}
+            movies={topRatedMovies || []}
           />
 
           <h2 className={styles.category}>Upcoming</h2>
           <MySwiper
             setMovieDetailsToShow={setMovieDetailsToShow}
-            movies={upComing || []}
+            movies={comingMovies || []}
           />
 
           <h2 className={styles.category}>Popular TV Shows</h2>
           <MySwiper
             setMovieDetailsToShow={setMovieDetailsToShow}
-            movies={tvPopular}
+            movies={tvPopularMovies}
           />
         </div>
 
@@ -99,10 +94,58 @@ export default function Home() {
 }
 
 export async function getServerSideProps(context: any) {
-  // const req = context.req
-  // const res = context.res
+  // const movies = await import('../data/popular.json')
+  // return {
+  //   props: {
+  //     popularMovies: movies.results || null,
+  //     topRatedMovies: movies.results || null,
+  //     comingMovies: movies.results || null,
+  //     tvPopularMovies: movies.results || null,
+  //   },
+  // }
+  try {
+    // Popular
+    const popularMoviesRes = await fetch(
+      `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.NEXT_PUBLIC_TMDB_API}&language=en-US&page=1`
+    )
+    const popularMovies = await popularMoviesRes.json()
 
-  return {
-    props: {},
+    // Top-Rated
+    const topRatedMoviesRes = await fetch(
+      `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.NEXT_PUBLIC_TMDB_API}&language=en-US`
+    )
+    const topRatedMovies = await topRatedMoviesRes.json()
+
+    // Coming
+    const comingMoviesRes = await fetch(
+      `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.NEXT_PUBLIC_TMDB_API}&language=en-US&page=1`
+    )
+    const comingMovies = await comingMoviesRes.json()
+
+    // Popular TV
+    const tvPopularMoviesRes = await fetch(
+      `https://api.themoviedb.org/3/tv/popular?api_key=${process.env.NEXT_PUBLIC_TMDB_API}&language=en-US`
+    )
+    const tvPopularMovies = await tvPopularMoviesRes.json()
+
+    return {
+      props: {
+        popularMovies: popularMovies.results || null,
+        topRatedMovies: topRatedMovies.results || null,
+        comingMovies: comingMovies.results || null,
+        tvPopularMovies: tvPopularMovies.results || null,
+      },
+    }
+  } catch (err) {
+    console.log(err)
+    const movies = await import('../data/popular.json')
+    return {
+      props: {
+        popularMovies: movies.results || null,
+        topRatedMovies: movies.results || null,
+        comingMovies: movies.results || null,
+        tvPopularMovies: movies.results || null,
+      },
+    }
   }
 }
