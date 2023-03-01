@@ -16,7 +16,7 @@ async function getVideos(term: string = 'Dilwale Dulhania Le Jayenge') {
 
     const apiKey = process.env.NEXT_PUBLIC_YOUTUBE_API
     const res = await axios.get(
-      `https://www.googleapis.com/youtube/v3/search?part=snippet&videoEmbeddable=true&type=video&key=${apiKey}&q=${term}`
+      `https://www.googleapis.com/youtube/v3/search?part=snippet&videoEmbeddable=true&type=video&key=${apiKey}&q=${term} Official trailer`
     )
 
     const videos = res.data.items.map((video: any) => ({
