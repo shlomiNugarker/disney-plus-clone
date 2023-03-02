@@ -42,8 +42,9 @@ export default function Home() {
           </header>
           <div className={styles.container}>
             <div onClick={() => router.push('home')}>
-              <span>
-                <Image src={logo} alt="" />
+              <span className={styles.logo}>
+                Video+
+                {/* <Image src={logo} alt="" /> */}
               </span>
               <p> + More than you&apos;d ever imagine </p>
               <div>
