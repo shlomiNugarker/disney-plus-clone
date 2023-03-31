@@ -8,3 +8,10 @@
     background-position: center;
   }
 }
+@media screen and (max-width: 600px) {
+  .swiper {
+    width: 900px;
+    img {
+    }
+  }
+}

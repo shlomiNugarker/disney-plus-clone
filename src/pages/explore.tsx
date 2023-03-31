@@ -60,14 +60,6 @@ export default function Explore({ movies }: Props) {
 }
 
 export async function getServerSideProps(context: any) {
-  // const tempData = await import('../data/top-rated.json')
-
-  // return {
-  //   props: {
-  //     movies: tempData.results,
-  //   },
-  // }
-
   try {
     const res = await fetch(
       `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.NEXT_PUBLIC_TMDB_API}&language=en-US&page=1`

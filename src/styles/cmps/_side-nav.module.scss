@@ -119,3 +119,59 @@
     }
   }
 }
+
+@media screen and (max-width: 600px) {
+  .side-nav {
+    nav {
+      div {
+        a {
+          .selected {
+            p {
+            }
+
+            svg {
+            }
+          }
+
+          span {
+            img {
+            }
+            svg {
+            }
+          }
+          p {
+          }
+        }
+      }
+    }
+  }
+
+  .nav-open {
+    nav {
+      div {
+        &:hover {
+          a {
+            span {
+              img {
+              }
+              svg {
+              }
+              p {
+              }
+            }
+          }
+        }
+        a {
+          span {
+            img {
+            }
+            svg {
+            }
+            p {
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -15,6 +15,7 @@
       align-items: center;
 
       .login-btn {
+        cursor: pointer;
         button {
           font-size: 16px;
           color: white;
@@ -83,6 +84,7 @@
         }
 
         div {
+          cursor: pointer;
           background: linear-gradient(93.87deg, #095ae6, #062794);
           display: flex;
           flex-direction: row;
@@ -262,6 +264,127 @@
         }
       }
       .right {
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .index {
+    .landing-page {
+      header {
+        .login-btn {
+          button {
+          }
+        }
+
+        .language {
+          display: none;
+          p {
+          }
+
+          select {
+            option {
+            }
+          }
+        }
+      }
+
+      .container {
+        div {
+          span {
+            img {
+            }
+
+            &.logo {
+            }
+          }
+
+          p {
+            text-align: center;
+          }
+
+          div {
+            width: 90%;
+            button {
+            }
+            span {
+            }
+          }
+        }
+      }
+    }
+
+    .divider {
+    }
+
+    .grid-container {
+      display: flex;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      div {
+        span {
+          svg {
+          }
+        }
+        h2 {
+        }
+        h3 {
+        }
+      }
+    }
+
+    .details,
+    .exclusive {
+      h2 {
+      }
+      h3 {
+      }
+
+      div {
+        img {
+        }
+      }
+    }
+
+    .exclusive {
+    }
+
+    .footer {
+      .actions {
+        flex-wrap: wrap;
+        div {
+          h4 {
+          }
+
+          ul {
+            li {
+            }
+          }
+        }
+
+        & .contact {
+          h4 {
+          }
+          ul {
+            li {
+              svg {
+              }
+            }
+          }
+        }
+      }
+
+      .links {
+        .left {
+          ul {
+            li {
+            }
+          }
+        }
+        .right {
+        }
       }
     }
   }

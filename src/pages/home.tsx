@@ -2,7 +2,7 @@ import SideNav from '@/cmps/SideNav'
 import Head from 'next/head'
 
 import styles from '../styles/pages/_home.module.scss'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import MySwiper from '@/cmps/MySwiper'
 import Movie from '@/interfaces/movie'
 import MovieDetails from '@/cmps/MovieDetails'
@@ -18,6 +18,17 @@ export default function Home(props: Props) {
   const [movieDetailsToShow, setMovieDetailsToShow] = useState<Movie | null>(
     null
   )
+
+  useEffect(() => {
+    ;(async () => {
+      const res = await fetch(
+        `https://api.themoviedb.org/3/tv/popular?api_key=${process.env.NEXT_PUBLIC_TMDB_API}&language=en-US`
+      )
+
+      const json = res.json()
+      console.log(json)
+    })()
+  }, [])
 
   const { popularMovies, topRatedMovies, comingMovies, tvPopularMovies } = props
 
@@ -94,15 +105,6 @@ export default function Home(props: Props) {
 }
 
 export async function getServerSideProps(context: any) {
-  // const movies = await import('../data/popular.json')
-  // return {
-  //   props: {
-  //     popularMovies: movies.results || null,
-  //     topRatedMovies: movies.results || null,
-  //     comingMovies: movies.results || null,
-  //     tvPopularMovies: movies.results || null,
-  //   },
-  // }
   try {
     // Popular
     const popularMoviesRes = await fetch(
@@ -138,13 +140,17 @@ export async function getServerSideProps(context: any) {
     }
   } catch (err) {
     console.log(err)
-    const movies = await import('../data/popular.json')
+
+    const popularDummy = await import('../data/popular.json')
+    const topRatedDummy = await import('../data/top-rated.json')
+    const comingDummy = await import('../data/upcoming.json')
+    const tvPopularDummy = await import('../data/TV/popular.json')
     return {
       props: {
-        popularMovies: movies.results || null,
-        topRatedMovies: movies.results || null,
-        comingMovies: movies.results || null,
-        tvPopularMovies: movies.results || null,
+        popularMovies: popularDummy.results || null,
+        topRatedMovies: topRatedDummy.results || null,
+        comingMovies: comingDummy.results || null,
+        tvPopularMovies: tvPopularDummy.results || null,
       },
     }
   }
