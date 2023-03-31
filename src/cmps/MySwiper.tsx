@@ -24,7 +24,7 @@ export default function MySwiper({ movies, setMovieDetailsToShow }: Props) {
       >
         {movies &&
           movies.map((movie, idx) => (
-            <SwiperSlide key={movie.id}>
+            <SwiperSlide key={movie.id} style={{ width: '120px' }}>
               <MoviePreview
                 movie={movie}
                 setMovieDetailsToShow={setMovieDetailsToShow}

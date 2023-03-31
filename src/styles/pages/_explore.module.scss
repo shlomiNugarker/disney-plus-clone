@@ -63,3 +63,27 @@
     font-size: 20px;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .explore {
+    .container {
+      .search-container {
+        & ::-webkit-input-placeholder {
+        }
+
+        div {
+          span {
+            svg {
+            }
+          }
+
+          input {
+          }
+        }
+      }
+    }
+
+    .title {
+    }
+  }
+}
