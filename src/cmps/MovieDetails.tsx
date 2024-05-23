@@ -1,4 +1,4 @@
-import { Dispatch, Key, SetStateAction, useState } from 'react'
+import { Dispatch, SetStateAction, useState } from 'react'
 
 import MoviePreview from './MoviePreview'
 import Movie from '@/interfaces/movie'
@@ -21,41 +21,50 @@ export default function MovieDetails({ movie, setMovieDetailsToShow }: Props) {
   const year = new Date(movie.release_date).getFullYear()
 
   return (
-    <div className={styles['movie-details']}>
-      <AiOutlineClose
-        onClick={() => {
-          setMovieDetailsToShow(null)
-        }}
-      />
-      <span>
-        {!isTrailerShown && (
-          <Image
-            loader={() => backdropPath}
-            src={backdropPath}
-            alt=""
-            width={100}
-            height={100}
-          />
-        )}
+    <div
+      className={styles.bg}
+      onClick={() => {
+        console.log('sfgsdfg')
 
-        {isTrailerShown && <VideoPreview movie={movie} />}
-      </span>
+        setMovieDetailsToShow(null)
+      }}
+    >
+      <div className={styles['movie-details']}>
+        <AiOutlineClose
+          onClick={() => {
+            setMovieDetailsToShow(null)
+          }}
+        />
+        <span>
+          {!isTrailerShown && (
+            <Image
+              loader={() => backdropPath}
+              src={backdropPath}
+              alt=""
+              width={100}
+              height={100}
+            />
+          )}
 
-      <div className={styles.details}>
-        <p>{movie?.title}</p>
-        <div>
-          <button onClick={() => setIsTrailerShown(!isTrailerShown)}>
-            Watch Trailer
-          </button>
+          {isTrailerShown && <VideoPreview movie={movie} />}
+        </span>
+
+        <div className={styles.details}>
+          <p>{movie?.title}</p>
+          <div>
+            <button onClick={() => setIsTrailerShown(!isTrailerShown)}>
+              Watch Trailer
+            </button>
+          </div>
+
+          <div>
+            <span>
+              {movie.vote_average}, {year}
+            </span>
+          </div>
+
+          <p className={styles.overview}>{movie.overview}</p>
         </div>
-
-        <div>
-          <span>
-            {movie.vote_average}, {year}
-          </span>
-        </div>
-
-        <p className={styles.overview}>{movie.overview}</p>
       </div>
     </div>
   )
