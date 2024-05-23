@@ -2,27 +2,13 @@
   color: white;
   margin-top: 25px;
 
-  img {
-    object-fit: cover;
-    height: 100%;
-    background-position: center;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 @media screen and (max-width: 600px) {
   .swiper {
-    width: 100%;
-    img {
-    }
-    .swiper-slide {
-      width: 900px;
-      margin: 0px;
-      width: 95.6667px;
-    }
-  }
-  .swiper-slide {
-    width: 120px !important;
-  }
-  .swiper-slide .swiper-slide-active {
-    width: 90px !important;
   }
 }

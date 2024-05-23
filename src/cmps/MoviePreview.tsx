@@ -18,16 +18,14 @@ export default function MoviePreview({ movie, setMovieDetailsToShow }: Props) {
         setMovieDetailsToShow(movie)
       }}
     >
-      <span>
-        <Image
-          loader={() => posterPath}
-          src={posterPath}
-          alt=""
-          width="20"
-          height="20"
-          unoptimized={true}
-        />
-      </span>
+      <Image
+        loader={() => posterPath}
+        src={posterPath}
+        alt=""
+        width="20"
+        height="20"
+        unoptimized={true}
+      />
     </section>
   )
 }
