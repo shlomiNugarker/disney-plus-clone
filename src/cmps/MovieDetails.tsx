@@ -24,8 +24,6 @@ export default function MovieDetails({ movie, setMovieDetailsToShow }: Props) {
     <div
       className={styles.bg}
       onClick={() => {
-        console.log('sfgsdfg')
-
         setMovieDetailsToShow(null)
       }}
     >
@@ -52,7 +50,12 @@ export default function MovieDetails({ movie, setMovieDetailsToShow }: Props) {
         <div className={styles.details}>
           <p>{movie?.title}</p>
           <div>
-            <button onClick={() => setIsTrailerShown(!isTrailerShown)}>
+            <button
+              onClick={(ev) => {
+                ev.stopPropagation()
+                setIsTrailerShown(!isTrailerShown)
+              }}
+            >
               Watch Trailer
             </button>
           </div>
